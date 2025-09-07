@@ -13,7 +13,7 @@ import LikeMateList from "./components/renters/LikeMateList.jsx";
 import Transactions from "./components/renters/Transactions.jsx";
 import Booking from "./components/mates/Booking.jsx";
 import Home from "./components/homePage/Home.jsx";
-import MateChatList from "./components/mates/mateChatList.jsx";
+import MateChatList from "./components/mates/MateChatList.jsx";
 
 function App() {
   return (
