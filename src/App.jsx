@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import VerifyEmail from "./components/auth/VerifyEmail.jsx";
-import RenterHome from "./components/renters/renterHome.jsx";
+import RenterHome from "./components/renters/RenterHome.jsx";
 import ChatRoom from "./components/chat/ChatRoom.jsx";
 import MateHome from "./components/mates/MateHome.jsx";
 import MateProfileforRenter from "./components/renters/MateProfileforRenter.jsx";
