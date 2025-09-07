@@ -12,7 +12,7 @@ export default function PopUpSendEmail({backMsg, email}) {
           <p>
             *If you don't see it in your inbox, please check your junk/spam folder.
           </p>
-          <button onClick={() => (window.location.href = "/auth/logIn")}>Continue</button>
+          <button onClick={() => (window.location.href = "/")}>Continue</button>
         </div>
       </div>
     </>
