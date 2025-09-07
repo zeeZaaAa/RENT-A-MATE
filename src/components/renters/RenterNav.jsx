@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SearchOverlay from "./searchBar";
+import SearchOverlay from "./SearchBar";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { BsHeart } from "react-icons/bs";
 import { GrTransaction } from "react-icons/gr";
