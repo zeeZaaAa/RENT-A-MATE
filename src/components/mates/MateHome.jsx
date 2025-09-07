@@ -1,7 +1,7 @@
 import MateNav from "./MateNav";
 import MateProfile from "./MateProfile";
 import MateBioDetail from "./MateBioDetail";
-import EditProfile from "./editProfile";
+import EditProfile from "./EditProfile";
 import { FaEdit } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import api from "../../api/apiClient";
