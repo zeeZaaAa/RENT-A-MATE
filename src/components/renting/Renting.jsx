@@ -37,6 +37,7 @@ export default function Renting() {
   }, [mateId]);
 
   const onSubmit = async (data) => {
+    console.log("Submitting data:", data);
     try {
       if (!data.others) data.others = "";
       const res = await api.post(`/api/booking/book?mateId=${mateId}`, data);
