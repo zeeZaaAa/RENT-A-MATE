@@ -28,7 +28,7 @@ export const connectSocket = async () => {
     } catch (err) {
       console.error("Cannot refresh token:", err);
       localStorage.clear();
-      window.location.href = "/auth/logIn";
+      window.location.href = "/";
       return null;
     }
   }
@@ -59,7 +59,7 @@ export const connectSocket = async () => {
       } catch (err) {
         console.error("Refresh token failed:", err);
         localStorage.clear();
-        window.location.href = "/auth/logIn";
+        window.location.href = "/";
       }
     }
   });
