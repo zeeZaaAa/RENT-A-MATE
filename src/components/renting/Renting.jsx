@@ -40,14 +40,23 @@ export default function Renting() {
     try {
       if (!data.others) data.others = "";
 
-      // แปลง Date object เป็น string ก่อนส่ง
+      // แปลง Date object ให้เป็น Bangkok local string "YYYY-MM-DDTHH:mm"
+      const startBangkok = new Date(data.startTime);
+      const endBangkok = new Date(data.endTime);
+
+      const formatLocal = (d) => {
+        const pad = (n) => (n < 10 ? "0" + n : n);
+        return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(
+          d.getDate()
+        )}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+      };
+
       const payload = {
         ...data,
-        startTime: data.startTime.toISOString(false).slice(0, 16), // "YYYY-MM-DDTHH:mm"
-        endTime: data.endTime.toISOString(false).slice(0, 16),
+        startTime: formatLocal(startBangkok),
+        endTime: formatLocal(endBangkok),
       };
-      console.log("Submitting data:", payload);
-
+      console.log("submitdata:", payload);
       const res = await api.post(`/api/booking/book?mateId=${mateId}`, payload);
       navigate(
         `/renter/renting/confirmbooking?bookingId=${res.data.bookingId}`
