@@ -37,23 +37,23 @@ export default function Renting() {
   }, [mateId]);
 
   const onSubmit = async (data) => {
-    console.log("Submitting data:", data);
     try {
       if (!data.others) data.others = "";
-      const res = await api.post(`/api/booking/book?mateId=${mateId}`, data);
-      if (!res.data.bookingId) {
-        console.error("No bookingId returned from server");
-        alert("Booking failed, please try again.");
-        return;
-      }
+
+      // แปลง Date object เป็น string ก่อนส่ง
+      const payload = {
+        ...data,
+        startTime: data.startTime.toISOString(false).slice(0, 16), // "YYYY-MM-DDTHH:mm"
+        endTime: data.endTime.toISOString(false).slice(0, 16),
+      };
+      console.log("Submitting data:", payload);
+
+      const res = await api.post(`/api/booking/book?mateId=${mateId}`, payload);
       navigate(
         `/renter/renting/confirmbooking?bookingId=${res.data.bookingId}`
       );
     } catch (err) {
-      const message =
-        err.response?.data?.message || "Booking failed, please try again.";
-      console.error("Booking failed:", message);
-      alert(message);
+      alert(err.response?.data?.message || "Booking failed, please try again.");
     }
   };
 
