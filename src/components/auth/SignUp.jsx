@@ -28,14 +28,14 @@ export default function SignUp({ compact, onClose }) {
     if (!nameRegex.test(data.name)) {
       return setError("name", {
         type: "manual",
-        message: "Name must be only Thai/English letters (2–30 chars)",
+        message: "Name must be only English letters (2–30 chars)",
       });
     }
 
     if (!nameRegex.test(data.surName)) {
       return setError("surName", {
         type: "manual",
-        message: "Surname must be only Thai/English letters (2–30 chars)",
+        message: "Surname must be only English letters (2–30 chars)",
       });
     }
 
