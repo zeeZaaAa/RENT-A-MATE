@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 export default function MateDetail({ mateProfile }) {
   const navigate = useNavigate();
 
-  // แปลง avaliable_date เป็นข้อความ
   const formatAvailableDate = (date) => {
     switch (date) {
       case "weekdays":
@@ -17,7 +16,6 @@ export default function MateDetail({ mateProfile }) {
     }
   };
 
-  // แปลง avaliable_time เป็นช่วงเวลา
   const formatAvailableTime = (timeArray) => {
     if (!timeArray || timeArray.length !== 2) return "Not available";
     return `${timeArray[0]} - ${timeArray[1]}`;

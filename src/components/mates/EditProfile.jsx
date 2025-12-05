@@ -18,10 +18,8 @@ export default function EditProfile({ onBack, mateData, setMateData }) {
   }, [mateData]);
 
   useEffect(() => {
-    // Fetch cities
     api.get("/search/cities").then((res) => setCities(res.data));
 
-    // Generate hours
     const h = [];
     for (let i = 0; i < 24; i++) {
       const hour = i.toString().padStart(2, "0") + ":00";
@@ -36,7 +34,7 @@ export default function EditProfile({ onBack, mateData, setMateData }) {
       ...prev,
       [name]: value,
     }));
-    setErrors((prev) => ({ ...prev, [name]: "" })); // clear error on change
+    setErrors((prev) => ({ ...prev, [name]: "" })); 
   };
 
   const validate = () => {
@@ -51,7 +49,6 @@ export default function EditProfile({ onBack, mateData, setMateData }) {
     if (!formData.interest) newErrors.interest = "Interest is required";
     if (!formData.city) newErrors.city = "City is required";
 
-    // Price rate: positive integer
     const price = parseInt(formData.price_rate, 10);
     if (!price || price <= 0 || !/^\d+$/.test(formData.price_rate))
       newErrors.price_rate = "Price rate must be a positive integer";
@@ -59,7 +56,6 @@ export default function EditProfile({ onBack, mateData, setMateData }) {
     if (!formData.avaliable_date)
       newErrors.avaliable_date = "Available date is required";
 
-    // Time validation
     const start = formData.avaliable_time?.[0];
     const end = formData.avaliable_time?.[1];
     if (!start || !end) {
@@ -98,7 +94,6 @@ export default function EditProfile({ onBack, mateData, setMateData }) {
   return (
     <div className="min-h-screen bg-emerald-50 flex flex-col items-center py-6 px-4 md:px-8">
       <div className="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-6 md:p-8 relative">
-        {/* Back Button */}
         <button
           type="button"
           onClick={onBack}
@@ -112,7 +107,6 @@ export default function EditProfile({ onBack, mateData, setMateData }) {
         </h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Profile Picture */}
           <div className="flex flex-col items-center">
             <ProfileUploader
               initialImage={formData.pic?.secure_url}
@@ -123,7 +117,6 @@ export default function EditProfile({ onBack, mateData, setMateData }) {
             />
           </div>
 
-          {/* Nickname */}
           <div>
             <label className="block text-sm font-semibold text-emerald-700">
               Nickname
@@ -137,7 +130,6 @@ export default function EditProfile({ onBack, mateData, setMateData }) {
             />
           </div>
 
-          {/* Introduce */}
           <div>
             <label className="block text-sm font-semibold text-emerald-700">
               Introduce Yourself
@@ -163,7 +155,6 @@ export default function EditProfile({ onBack, mateData, setMateData }) {
             )}
           </div>
 
-          {/* Skill / Interest / City / Price */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-semibold text-emerald-700">
@@ -244,7 +235,6 @@ export default function EditProfile({ onBack, mateData, setMateData }) {
             </div>
           </div>
 
-          {/* Available Date */}
           <div>
             <label className="block text-sm font-semibold text-emerald-700">
               Available Date
@@ -269,7 +259,6 @@ export default function EditProfile({ onBack, mateData, setMateData }) {
             )}
           </div>
 
-          {/* Available Time */}
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-semibold text-emerald-700">
@@ -332,7 +321,6 @@ export default function EditProfile({ onBack, mateData, setMateData }) {
             <p className="text-red-500 text-sm mt-1">{errors.avaliable_time}</p>
           )}
 
-          {/* Submit */}
           <div className="flex justify-center">
             <button
               type="submit"

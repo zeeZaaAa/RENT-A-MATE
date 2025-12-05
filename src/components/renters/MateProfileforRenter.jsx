@@ -20,7 +20,6 @@ export default function MateProfileforRenter() {
   const [isLiked, setIsLiked] = useState(false);
   const [likeLoading, setLikeLoading] = useState(false);
 
-  // ✅ ดึงข้อมูล mate
   useEffect(() => {
     async function fetchMate() {
       try {
@@ -35,7 +34,6 @@ export default function MateProfileforRenter() {
     if (mateId) fetchMate();
   }, [mateId]);
 
-  // ✅ เช็คว่า liked หรือยัง
   useEffect(() => {
     async function checkIsLiked() {
       if (!mateId) return;
@@ -69,7 +67,6 @@ export default function MateProfileforRenter() {
     }
   };
 
-  // ✅ chat
   const handleChatClick = async () => {
     if (!mateId) return;
     setChatLoading(true);

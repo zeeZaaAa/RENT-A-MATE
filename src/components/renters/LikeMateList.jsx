@@ -36,7 +36,6 @@ export default function LikeMateList() {
   return (
     <div className="min-h-screen bg-blue-50 p-4 sm:p-6 lg:p-8 relative">
       <div className="max-w-6xl mx-auto">
-        {/* 🔹 ปุ่ม Home */}
         <Link
           to="/renter"
           className="absolute top-4 left-4 p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transition"
@@ -45,7 +44,7 @@ export default function LikeMateList() {
         </Link>
 
         <h1 className="text-2xl font-bold text-center text-blue-800 mb-8">
-          ❤️ Your Liked Mates
+          Your Liked Mates
         </h1>
 
         {/* Mate Cards */}

@@ -23,7 +23,6 @@ export default function ChatRoom() {
 
   const isRenter = user.role === "renter";
 
-  // สีหลักตาม theme
   const primaryColor = isRenter ? "blue" : "emerald";
 
   useEffect(() => {
@@ -88,7 +87,6 @@ export default function ChatRoom() {
         isRenter ? "bg-blue-50" : "bg-emerald-50"
       } text-neutral-700`}
     >
-      {/* Nav แยกตาม role */}
       {isRenter ? <RenterNav /> : <MateNav />}
 
       <div className="w-full max-w-full sm:max-w-xl mx-auto mt-4 sm:mt-6 p-2 sm:p-4">

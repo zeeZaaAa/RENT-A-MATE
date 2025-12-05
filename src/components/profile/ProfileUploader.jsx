@@ -7,18 +7,15 @@ export default function ProfileUploader({ initialImage, onUploadSuccess }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // เมื่อผู้ใช้เลือกไฟล์
   const onFileChange = (e) => {
     const selected = e.target.files[0];
     if (!selected) return;
 
-    // ตรวจขนาดไฟล์
     if (selected.size > 5 * 1024 * 1024) {
       setError("File size should be 5MB or less");
       return;
     }
 
-    // ตรวจชนิดไฟล์
     if (!selected.type.startsWith("image/")) {
       setError("Please select an image file");
       return;
@@ -29,7 +26,6 @@ export default function ProfileUploader({ initialImage, onUploadSuccess }) {
     setPreview(URL.createObjectURL(selected));
   };
 
-  // อัปโหลดไปยัง backend
   const uploadFile = async () => {
     if (!file) {
       setError("Please select a file first");
@@ -50,7 +46,6 @@ export default function ProfileUploader({ initialImage, onUploadSuccess }) {
       setPreview(newPic);
       setFile(null);
 
-      // แจ้ง parent component ให้ update state
       if (onUploadSuccess) onUploadSuccess(res.data.pic);
 
       alert("Upload successful!");

@@ -13,7 +13,6 @@ export default function MateProfile({ mateData }) {
 
   return (
     <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-      {/* Profile Picture */}
       <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-emerald-500 shadow-md flex-shrink-0">
         <img
           src={mateData.pic?.secure_url}
@@ -22,7 +21,6 @@ export default function MateProfile({ mateData }) {
         />
       </div>
 
-      {/* Info */}
       <div className="flex flex-col text-center sm:text-left">
         <div className="flex flex-wrap justify-center sm:justify-start items-center gap-2 text-xl font-bold text-emerald-700">
           <p>{mateData.name}</p>

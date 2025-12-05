@@ -25,7 +25,6 @@ export default function Renting() {
         setMateProfile(data.mateProfile);
       } catch (err) {
         console.error("Failed to request:", err);
-        // Alert the error message from backend if available
         const message =
           err.response?.data?.message ||
           "Failed to fetch mate profile. Please try again.";
@@ -40,7 +39,6 @@ export default function Renting() {
     try {
       if (!data.others) data.others = "";
 
-      // แปลง Date object ให้เป็น Bangkok local string "YYYY-MM-DDTHH:mm"
       const startBangkok = new Date(data.startTime);
       const endBangkok = new Date(data.endTime);
 

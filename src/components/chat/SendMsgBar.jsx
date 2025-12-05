@@ -13,7 +13,7 @@ export default function SendMsgBar({ onSend, primaryColor = "blue" }) {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault(); // ป้องกันขึ้นบรรทัดใหม่
+      e.preventDefault();
       handleSend();
     }
   };

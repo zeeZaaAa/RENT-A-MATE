@@ -16,7 +16,6 @@ export default function ChatList() {
   const pageSize = 6;
   const navigate = useNavigate();
 
-  // ---- Fetch chats from backend ----
   useEffect(() => {
     const fetchChats = async () => {
       setLoading(true);
@@ -84,7 +83,6 @@ export default function ChatList() {
                 className={`flex justify-between items-center py-3 px-2 rounded-lg cursor-pointer ${theme.hover} transition`}
               >
                 <div className="flex items-center gap-3">
-                  {/* รูป profile */}
                   <img
                     src={chat.pic.secure_url}
                     alt={chat.user}

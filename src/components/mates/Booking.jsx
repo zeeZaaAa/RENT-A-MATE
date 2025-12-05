@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../../api/apiClient";
 import { format } from "date-fns";
 import { FaHome } from "react-icons/fa";
-import { RxCheck } from "react-icons/rx"; // ติ้กถูก
+import { RxCheck } from "react-icons/rx"; 
 import { Link } from "react-router-dom";
 
 export default function Booking() {
@@ -11,7 +11,7 @@ export default function Booking() {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
   const [endingIds, setEndingIds] = useState([]);
-  const [toast, setToast] = useState(null); // { message: "", visible: true }
+  const [toast, setToast] = useState(null); 
   const pageSize = 10;
 
   const fetchBookings = async (pageNum = 1) => {
@@ -41,9 +41,8 @@ export default function Booking() {
     try {
       setEndingIds((prev) => [...prev, id]);
       const res = await api.post(`/api/booking/end/${id}`);
-      // แสดง toast animation
       setToast({ message: res.data.message, visible: true });
-      setTimeout(() => setToast(null), 3000); // 3 วินาที
+      setTimeout(() => setToast(null), 3000);
       fetchBookings(page);
     } catch (err) {
       const message = err.response?.data?.message || err.message;
@@ -67,7 +66,6 @@ export default function Booking() {
 
   return (
     <div className="p-4 md:p-8 bg-emerald-50 min-h-screen relative">
-      {/* Home Button */}
       <Link
         to="/mate"
         className="absolute top-4 left-4 p-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-lg transition"
@@ -75,14 +73,12 @@ export default function Booking() {
         <FaHome size={20} />
       </Link>
 
-      {/* Title */}
       <div className="flex justify-center mb-6">
         <h1 className="text-2xl md:text-3xl font-bold text-emerald-800">
           My Bookings
         </h1>
       </div>
 
-      {/* Toast Animation */}
       {toast && toast.visible && (
         <div className="fixed top-20 left-1/2 -translate-x-1/2 bg-white border border-emerald-400 shadow-lg rounded-lg px-6 py-4 flex items-center space-x-3 animate-fade-in-out z-50">
           <RxCheck className="text-emerald-600 text-2xl animate-bounce" />
@@ -90,7 +86,6 @@ export default function Booking() {
         </div>
       )}
 
-      {/* Loading & Table */}
       {loading ? (
         <div className="text-center text-emerald-700 py-10">Loading...</div>
       ) : bookings.length === 0 ? (
@@ -156,7 +151,6 @@ export default function Booking() {
         </div>
       )}
 
-      {/* Pagination */}
       <div className="flex justify-center items-center mt-6 space-x-3">
         <button
           onClick={() => setPage((p) => Math.max(p - 1, 1))}
@@ -177,7 +171,6 @@ export default function Booking() {
         </button>
       </div>
 
-      {/* Tailwind animation */}
       <style>
         {`
         @keyframes fade-in-out {

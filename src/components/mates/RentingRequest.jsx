@@ -31,7 +31,6 @@ export default function RentingRequest() {
     fetchRequests(page);
   }, [page]);
 
-  // ✅ handle accept/reject
   const handleAccept = async (id) => {
     try {
       await api.post(`/api/booking/${id}/accept`);

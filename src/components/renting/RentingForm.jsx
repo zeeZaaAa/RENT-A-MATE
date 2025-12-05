@@ -109,10 +109,8 @@ export default function RentingForm({
     const hour = time.getHours();
     const minute = time.getMinutes();
 
-    // จำกัด startTime ไม่ให้สูงสุดเกิน endHour - 1
     if (minute !== 0 || hour < startHour || hour > endHour - 1) return false;
 
-    // เช็คกับ unavailableSlots
     const conflict = unavailableSlots.some(
       (slot) => time >= slot.start && time < slot.end
     );
@@ -120,24 +118,6 @@ export default function RentingForm({
     return !conflict;
   };
 
-  // const setReal_avaliableStartTime = (date) => {
-  //   if (loadingSlots) return null;
-
-  //   const [startStr, endStr] = mateData.avaliable_time;
-  //   const startHour = +startStr.split(":")[0];
-  //   const endHour = +endStr.split(":")[0];
-
-  //   for (let i = startHour; i < endHour; i++) {
-  //     const time = new Date(date);
-  //     time.setHours(i, 0, 0, 0);
-  //     console.log(time)
-  //     const result = filterStartTime(time);
-  //     if (result) {
-  //       return time;
-  //     }
-  //   }
-  //   return null;
-  // };
 
   const filterEndTime = (time) => {
     if (!startTime) return false;
@@ -152,12 +132,9 @@ export default function RentingForm({
 
     const hour = time.getHours();
     const minute = time.getMinutes();
-
-    // ต้องเป็นชั่วโมงเต็ม, >= startHour+1, <= availEndHour
     if (minute !== 0 || hour < startDate.getHours() + 1 || hour > availEndHour)
       return false;
 
-    // ตรวจสอบกับ unavailableSlots
     const conflict = unavailableSlots.some(
       (slot) => time > slot.start && time <= slot.end
     );
@@ -188,13 +165,6 @@ export default function RentingForm({
                   if (!date) return;
 
                   const temp = new Date(date);
-
-                  // ถ้า user เลือกเฉพาะวัน ให้เซ็ต default เวลา
-                  // if (temp.getHours() === 0 && temp.getMinutes() === 0) {
-                  //   const result = setReal_avaliableStartTime(temp);
-                  //   console.log(`result: ${result}`);
-                  //   console.log(`temp:${temp}`);
-                  // }
 
                   field.onChange(temp);
                 }}
@@ -239,18 +209,15 @@ export default function RentingForm({
               );
             }
 
-            // เอาวันจาก startTime
             const startDate = new Date(startTime);
             const [availStartStr, availEndStr] = mateData.avaliable_time;
             const availStartHour = +availStartStr.split(":")[0];
             const availEndHour = +availEndStr.split(":")[0];
 
-            // ถ้า startTime ไม่มีเวลา ให้ default startHour
             if (startDate.getHours() === 0 && startDate.getMinutes() === 0) {
               startDate.setHours(availStartHour, 0);
             }
 
-            // สร้าง default endTime เป็น startTime + 1 ชั่วโมง
             let endDate;
             if (field.value) {
               endDate = new Date(field.value);
@@ -266,7 +233,6 @@ export default function RentingForm({
             endDate.setMonth(startDate.getMonth());
             endDate.setFullYear(startDate.getFullYear());
 
-            // min/max end time
             const startHourSelected = startDate.getHours();
             const minEndHour =
               startHourSelected + 1 <= availEndHour

@@ -6,10 +6,10 @@ import { createPortal } from "react-dom";
 
 export default function SearchOverlay() {
   const [search, setSearch] = useState("");
-  const [interestInput, setInterestInput] = useState(""); // input ของ renter
-  const [selectedInterests, setSelectedInterests] = useState([]); // selected multi
-  const [avaliableDate, setAvaliableDate] = useState(""); // "" = not selected
-  const [minRate, setMinRate] = useState(null); // filter ขั้นต่ำ review_rate
+  const [interestInput, setInterestInput] = useState(""); 
+  const [selectedInterests, setSelectedInterests] = useState([]); 
+  const [avaliableDate, setAvaliableDate] = useState(""); 
+  const [minRate, setMinRate] = useState(null);
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
@@ -21,7 +21,6 @@ export default function SearchOverlay() {
 
   const defaultInterests = ["game", "drinks", "gym", "coding"];
 
-  // โหลด mates
   useEffect(() => {
     async function fetchMates() {
       try {
@@ -47,7 +46,6 @@ export default function SearchOverlay() {
     if (open) fetchMates();
   }, [search, selectedInterests, avaliableDate, minRate, page, open]);
 
-  // close overlay click outside
   useEffect(() => {
     function handleClickOutside(e) {
       if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
@@ -58,7 +56,6 @@ export default function SearchOverlay() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // เพิ่ม/จัดการ interest จาก input
   const addCustomInterests = () => {
     if (!interestInput.trim()) return;
     const newItems = interestInput
@@ -79,7 +76,6 @@ export default function SearchOverlay() {
     setPage(1);
   };
 
-  // ✨ สร้าง overlay ด้วย Portal
   const overlay = open ? (
     <div
       ref={wrapperRef}
@@ -306,7 +302,7 @@ export default function SearchOverlay() {
 
       {/* Overlay */}
 
-      {/* render overlay ด้วย Portal */}
+      {/* render overlay */}
       {typeof document !== "undefined" ? createPortal(overlay, document.body) : null}
     </div>
   );

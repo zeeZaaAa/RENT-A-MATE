@@ -11,7 +11,6 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-tr from-blue-400 via-purple-500 to-pink-400 overflow-hidden flex items-center justify-center font-poppins">
-      {/* Animated floating circles */}
       <motion.div
         className="absolute w-72 h-72 bg-white/10 rounded-full top-10 left-10"
         animate={{ y: [0, 20, 0], x: [0, 20, 0] }}
@@ -28,7 +27,6 @@ export default function Home() {
         transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
       />
 
-      {/* Glass card */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -58,7 +56,6 @@ export default function Home() {
         </div>
       </motion.div>
 
-      {/* Floating sparkles */}
       <div className="absolute inset-0 pointer-events-none">
         {Array.from({ length: 12 }).map((_, i) => (
           <motion.div
@@ -74,11 +71,9 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Login slide-in */}
       <AnimatePresence>
         {showLogin && (
           <>
-            {/* Blur background */}
             <motion.div
               className="absolute inset-0 bg-black/40 backdrop-blur-sm z-20"
               initial={{ opacity: 0 }}
@@ -86,7 +81,6 @@ export default function Home() {
               exit={{ opacity: 0 }}
               onClick={() => setShowLogin(false)}
             />
-            {/* Login Panel */}
             <motion.div
               className="absolute top-1/2 left-1/2 -translate-y-1/2 w-full sm:w-96 bg-white/30 backdrop-blur-[1px] z-30 shadow-2xl rounded-2xl p-6"
               initial={{ x: "100%", opacity: 0 }}
@@ -99,10 +93,8 @@ export default function Home() {
           </>
         )}
 
-        {/* SignUp slide-in */}
         {showSignUp && (
           <>
-            {/* Blur background */}
             <motion.div
               className="absolute inset-0 bg-black/40 backdrop-blur-sm z-20"
               initial={{ opacity: 0 }}
@@ -110,7 +102,6 @@ export default function Home() {
               exit={{ opacity: 0 }}
               onClick={() => setShowSignUp(false)}
             />
-            {/* SignUp Panel */}
             <motion.div
               className="absolute top-1/2 left-1/2 -translate-y-1/2 w-full sm:w-96 bg-white/30 backdrop-blur-[1px] z-30 shadow-2xl rounded-2xl p-6"
               initial={{ x: "-100%", opacity: 0 }}

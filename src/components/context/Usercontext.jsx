@@ -4,7 +4,7 @@ import api, { setAccessToken } from "../../api/apiClient.js";
 const UserContext = createContext(null);
 
 export const UserProvider = ({ children }) => {
-  // user = { id, name, surName, role } หรือ null
+  // user = { id, name, surName, role } or null
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("user");
     return savedUser ? JSON.parse(savedUser) : null;
@@ -14,7 +14,6 @@ export const UserProvider = ({ children }) => {
     const handleStorageChange = () => {
       const savedUser = localStorage.getItem("user");
       setUser(savedUser ? JSON.parse(savedUser) : null);
-      // อัปเดต accessToken ด้วย ถ้ามี
       const token = localStorage.getItem("accessToken");
       setAccessToken(token || null);
     };
@@ -23,7 +22,6 @@ export const UserProvider = ({ children }) => {
     return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
-  // sync user + token ลง localStorage ทุกครั้งที่เปลี่ยน
   useEffect(() => {
     if (user) {
       localStorage.setItem("user", JSON.stringify(user));
@@ -38,7 +36,7 @@ export const UserProvider = ({ children }) => {
   }, [user]);
 
   const login = ({ user, accessToken, refreshToken }) => {
-    setUser(user); // เก็บเฉพาะข้อมูล user
+    setUser(user); 
     localStorage.setItem("accessToken", accessToken);
     localStorage.setItem("refreshToken", refreshToken);
     setAccessToken(accessToken);

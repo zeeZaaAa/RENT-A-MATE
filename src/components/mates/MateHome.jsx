@@ -67,7 +67,6 @@ export default function MateHome() {
 
   return (
     <div className="min-h-screen bg-emerald-50 text-emerald-900 flex flex-col">
-      {/* Navbar */}
       <MateNav />
 
       {/* Main Content */}
@@ -108,7 +107,6 @@ export default function MateHome() {
         )}
       </main>
 
-      {/* Logout Button above footer, left-aligned */}
       <div className="w-full max-w-6xl mt-6 flex justify-start px-4 md:px-8 lg:px-16">
         <button
           onClick={logout}
@@ -118,7 +116,6 @@ export default function MateHome() {
         </button>
       </div>
 
-      {/* Footer */}
       <footer className="bg-emerald-600 text-white text-center py-3 mt-6">
         © 2025 Rent a Mate
       </footer>

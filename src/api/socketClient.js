@@ -17,7 +17,6 @@ const isTokenValid = (token) => {
 export const connectSocket = async () => {
   let accessToken = localStorage.getItem("accessToken");
 
-  // ถ้า access token หมดอายุ ให้ลอง refresh ก่อน connect
   if (!isTokenValid(accessToken)) {
     try {
       const res = await api.post("/api/auth/refresh-token", {
@@ -33,7 +32,6 @@ export const connectSocket = async () => {
     }
   }
 
-  // สร้าง socket ด้วย token ที่ valid
   socket = io(import.meta.env.VITE_BACK_API, {
     auth: { token: accessToken },
     transports: ["websocket"],
