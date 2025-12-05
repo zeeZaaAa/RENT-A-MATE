@@ -2,7 +2,7 @@
 
 This is a Rent a mate (Front End) project. A project that made to access the SAIG laboratory KMITL.
 
-## Feture:
+## Features:
 * Roles base
 * Renting System
 * Search, Filter, Pagination
